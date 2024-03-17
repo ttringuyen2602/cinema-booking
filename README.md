@@ -1,31 +1,39 @@
-<<<<<<< HEAD
-# CinemaBookingUi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+### Installation
+* `npm install` (installing dependencies)
+* `npm outdated` (verifying dependencies)
 
-## Development server
+### Developpement
+* `npm run start`
+* in your browser [http://localhost:4200](http://localhost:4200) 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Linter
+* `npm run lint`
 
-## Code scaffolding
+## Tests
+* `npm run test`
+* `npm run coverage`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Compilation
+* `npm run build`       ( with SSR)
 
-## Build
+### Production
+* `npm run serve`
+* in your browser [http://localhost:4000](http://localhost:4000) 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Angular & Docker
 
-## Running end-to-end tests
+* `build image`
+* docker build -t angular-starter:1.0.0 .
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* `run container`
+* docker run -d -p 4000:4000 angular-starter:1.0.0
 
-## Further help
+* `run container mode bash`
+* docker run -it angular-starter:1.0.0 /bin/bash
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-=======
-# cinema-booking
->>>>>>> b6d18c78b51b07dc29240456c17b0c91efb5bddb
+
+* in your browser [http://localhost:4000](http://localhost:4000) 
+
