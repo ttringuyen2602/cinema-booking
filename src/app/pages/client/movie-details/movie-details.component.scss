@@ -1,0 +1,60 @@
+.book__ticket__wrapper {
+  ul {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  nz-select {
+    margin: 0 8px 10px 0;
+    width: 200px;
+  }
+
+  .content__data__full {
+    div,
+    a,
+    p,
+    span,
+    p span {
+      font-size: 14px;
+      text-align: justify;
+      font-family:
+        Nunito Sans,
+        sans-serif !important;
+      font-style: inherit !important;
+      font-weight: inherit !important;
+      overflow: hidden;
+      color: inherit;
+      margin: 0 0 8pt !important;
+    }
+  }
+  .content__data__full {
+    a,
+    &span {
+      color: #485fc7;
+      cursor: pointer;
+      text-decoration: none;
+      font-family:
+        Nunito Sans,
+        sans-serif !important;
+    }
+  }
+  .line {
+    width: 100%;
+    height: 2px;
+    background-color: #034ea2;
+    margin: 1rem 0;
+  }
+
+  .button-text-white {
+    color: #ffffff;
+  }
+  .button-readmore {
+    color: #f26b38;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}

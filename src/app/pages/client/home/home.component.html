@@ -1,3 +1,11 @@
+<nz-carousel nzAutoPlay nzAutoPlaySpeed="5000">
+  @for (img of carousel.img; track img) {
+    <div nz-carousel-content>
+      <img class="carousel__img" draggable="false" alt="Đây là Carousel" [src]="carousel.carouselPath + img" />
+    </div>
+  }
+</nz-carousel>
+
 <div class="content">
   <div class="films">
     <h4 class="films__title">Phim đang chiếu</h4>
@@ -25,7 +33,7 @@
         <a class="promotion__item-link" href="#">
           <img
             class="promotion__item-img"
-            src="~/assets/images/promotion-thumbnails/combo-u22-thumbnail.jpg"
+            src="/assets/images/promotion-thumbnails/combo-u22-thumbnail.jpg"
             alt="U22 vui vẻ - bắp nước siêu hạt dẻ"
           />
         </a>
@@ -35,7 +43,7 @@
         <a class="promotion__item-link" href="#">
           <img
             class="promotion__item-img"
-            src="~/assets/images/promotion-thumbnails/vn-pay-10-percent-thumbnail.jpg"
+            src="/assets/images/promotion-thumbnails/vn-pay-10-percent-thumbnail.jpg"
             alt="VNPAY giảm ngay 15K!"
           />
         </a>
@@ -45,7 +53,7 @@
         <a class="promotion__item-link" href="#">
           <img
             class="promotion__item-img"
-            src="~/assets/images/promotion-thumbnails/ngay-tri-an-thumbnail.jpg"
+            src="/assets/images/promotion-thumbnails/ngay-tri-an-thumbnail.jpg"
             alt="Ngày tri ân của Galaxy Cinema"
           />
         </a>
@@ -61,7 +69,7 @@
         <a class="promotion__item-link" href="#">
           <img
             class="promotion__item-img"
-            src="~/assets/images/promotion-thumbnails/milo-kv-thumbnail.jpg"
+            src="/assets/images/promotion-thumbnails/milo-kv-thumbnail.jpg"
             alt="Milo siêu khủng giá chỉ 19K"
           />
         </a>
@@ -71,7 +79,7 @@
         <a class="promotion__item-link" href="#">
           <img
             class="promotion__item-img"
-            src="~/assets/images/promotion-thumbnails/bang-qltv-thumbnail.jpg"
+            src="/assets/images/promotion-thumbnails/bang-qltv-thumbnail.jpg"
             alt="Chào 2023, đón mưa quà tặng thành viên"
           />
         </a>
@@ -81,7 +89,7 @@
         <a class="promotion__item-link" href="#">
           <img
             class="promotion__item-img"
-            src="~/assets/images/promotion-thumbnails/free-truong-chuyen-thumbnail.jpg"
+            src="/assets/images/promotion-thumbnails/free-truong-chuyen-thumbnail.jpg"
             alt="Galaxy Trung Chánh dành tặng suất chiếu đặc biệt"
           />
         </a>
