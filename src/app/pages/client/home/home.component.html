@@ -1,10 +1,20 @@
-<nz-carousel nzAutoPlay nzAutoPlaySpeed="5000">
-  @for (img of carousel.img; track img) {
-    <div nz-carousel-content>
-      <img class="carousel__img" draggable="false" alt="Đây là Carousel" [src]="carousel.carouselPath + img" />
-    </div>
-  }
-</nz-carousel>
+<div class="carousel--animate w-full h-[506px]">
+  <div class="app-header--shadow absolute w-full h-[60px] z-10"></div>
+    <app-header class="relative z-20"/>
+  <div class="absolute w-full top-0">
+    <nz-carousel
+      nzEffect="fade"
+      nzAutoPlaySpeed="5000"
+      nzTransitionSpeed="550">
+      @for (img of carousel.img; track img) {
+        <div nz-carousel-content>
+          <img class="carousel__img--transition" draggable="false" alt="Đây là Carousel"
+               [src]="carousel.carouselPath + img" />
+        </div>
+      }
+    </nz-carousel>
+  </div>
+</div>
 
 <div class="content">
   <div class="films">
@@ -97,3 +107,4 @@
     </ul>
   </div>
 </div>
+<app-footer />

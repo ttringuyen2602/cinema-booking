@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "assets/themify-icons/themify-icons.css";
+@import "assets/fontawesome-free-6.4.0-web/css/all.min.css";
 
 :root {
   --back-ground-color: #0e1226;
@@ -16,6 +18,11 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url('/assets/font/Montserrat-VariableFont_wght.ttf') format('woff2');
 }
 
 /* Common CSS */
@@ -34,8 +41,9 @@ img {
 
 .app {
   background-color: var(--back-ground-color);
-  font-family: 'Montserrat', sans-serif;
-  color: var(--text-color);
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  color: var(--text-color) !important;
   min-height: 100vh;
 }
 
@@ -63,9 +71,20 @@ ul {
   padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
 .svg-inline--fa {
   display: inline-block;
   height: 1em;
   overflow: visible;
   vertical-align: -0.125em;
+}
+
+.slick-dots button {
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 2px 1px rgb(145 145 145);
 }

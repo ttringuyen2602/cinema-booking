@@ -1,0 +1,102 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  z-index: 10;
+  position: relative;
+  margin-bottom: 24px;
+  padding-top: 8px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.account {
+  position: relative;
+  right: 20px;
+}
+
+.account a {
+  cursor: pointer;
+  user-select: none;
+}
+
+.navbar__list {
+  display: flex;
+  margin-bottom: 0 !important;
+}
+
+.navbar__list-item {
+  flex-grow: 1;
+  text-align: center;
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 16px 22px;
+    text-shadow: 1px 1px 4px black;
+  }
+
+  &:first-child a, &:last-child a {
+    padding-left: 0;
+  }
+
+  a:hover {
+    color: var(--nav-color-hover);
+  }
+}
+
+.search-btn {
+  width: 56px;
+  height: 48px;
+  background-color: var(--my-red-color);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.search-btn:hover {
+  opacity: 0.8;
+}
+
+.search-btn__icon {
+  color: white;
+  font-size: 18px;
+}
+
+.app-logo {
+  width: 240px;
+  text-align: center;
+}
+
+.app-logo a {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--orange-color);
+}
+
+.account_selection {
+  position: absolute;
+  top: 32px;
+  background-color: #333;
+  padding: 16px;
+  border-radius: 6px;
+  width: 140px;
+  right: 0;
+  display: none;
+}
+
+.account_selection__sign-in {
+  margin-bottom: 16px;
+}

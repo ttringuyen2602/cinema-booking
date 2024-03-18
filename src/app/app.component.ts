@@ -60,5 +60,4 @@ import { CarouselState } from '@src/app/models/CarouselState'
 })
 export class AppComponent {
   title = 'cinema-booking-ui'
-  carousel = new CarouselState()
 }

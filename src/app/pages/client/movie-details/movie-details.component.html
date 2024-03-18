@@ -1,3 +1,5 @@
+<app-header />
+
 <div class="book__ticket__wrapper">
   <nz-modal [(nzVisible)]="isToggleTrailer" [nzWidth]="845" [nzFooter]="null" (nzOnCancel)="handleCancel()">
     <ng-container *nzModalContent>
@@ -6,7 +8,6 @@
         height="440"
         src="https://www.youtube.com/embed/0HSIUZtxeKM?si=Rj5nlxJtWQv9b6Tc"
         title="YouTube video player"
-        frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
@@ -893,3 +894,7 @@
     </div>
   </div>
 </div>
+
+<app-footer />
+
+<router-outlet />

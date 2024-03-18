@@ -1,0 +1,15 @@
+.carousel--animate .slick-active {
+    animation: zoomInOut 2.5s ease-out;
+}
+
+@keyframes zoomInOut {
+    22% {
+        transform: scale(1.02);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

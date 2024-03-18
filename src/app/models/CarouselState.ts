@@ -8,7 +8,4 @@ export class CarouselState {
         "quet-vn-pay.jpg"
     ];
     carouselPath: string = "assets/images/carousel/";
-    carouselSrc: string = "gotg3-2.jpg";
-    delayTime: number = 550;
-    lastClickTime: number = 0;
 }

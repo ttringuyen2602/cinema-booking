@@ -1,30 +1,39 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { RouterLink, RouterOutlet } from '@angular/router'
 import { NzTabsModule } from 'ng-zorro-antd/tabs'
 import { NzSelectModule } from 'ng-zorro-antd/select'
 import { NzModalModule } from 'ng-zorro-antd/modal'
+import { HeaderComponent } from '@src/app/components/header/header.component'
+import { FooterComponent } from '@src/app/components/footer/footer.component'
+import { HttpClient, HttpClientModule } from '@angular/common/http'
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, NzTabsModule, NzSelectModule, NzModalModule],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    NzTabsModule,
+    NzSelectModule,
+    NzModalModule,
+    HeaderComponent,
+    FooterComponent,
+    HttpClientModule
+  ],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.scss'
 })
-export class MovieDetailsComponent {
+export class MovieDetailsComponent implements OnInit {
   isToggleTrailer: boolean = false
-  // url: string = '/assets/data.json'
-  // dataExample: any
+  url: string = '/assets/data.json'
+  dataExample: any
 
-  // constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
-  // ngOnInit() {
-  //   fetch(this.url)
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       this.dataExample = json
-  //     })
-  // }
+  ngOnInit() {
+    // this.httpClient.get(this.url)
+    //   .subscribe(res => this.dataExample = res)
+  }
 
   tabs = [
     {
