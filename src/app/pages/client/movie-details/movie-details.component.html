@@ -1,11 +1,17 @@
 <app-header />
 
 <div class="book__ticket__wrapper">
-  <nz-modal [(nzVisible)]="isToggleTrailer" [nzWidth]="845" [nzFooter]="null" (nzOnCancel)="handleCancel()">
+  <nz-modal
+    [(nzVisible)]="isToggleTrailer"
+    [nzStyle]="{ left: '-35%', top: '5%' }"
+    [nzWidth]="0"
+    [nzFooter]="null"
+    (nzOnCancel)="handleCancel()"
+  >
     <ng-container *nzModalContent>
       <iframe
-        width="800"
-        height="440"
+        width="1022"
+        height="575"
         src="https://www.youtube.com/embed/0HSIUZtxeKM?si=Rj5nlxJtWQv9b6Tc"
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -95,7 +101,7 @@
           </div>
           <div class="col-span-2 lg:-translate-y-20 flex flex-col justify-end md:-translate-y-16 -translate-y-0">
             <div class="item__title flex items-center">
-              <h1 class="text-[20px] md:text-[24px] lg:text-[28px] font-bold text-black-10 mr-4">Gặp Lại Chị Bầu</h1>
+              <h1 class="text-[20px] md:text-[24px] lg:text-[28px] font-bold text-white mr-4">Gặp Lại Chị Bầu</h1>
               <span
                 class="inline-flex items-center justify-center w-[38px] h-7 bg-primary rounded text-sm text-center text-white font-bold not-italic"
               >
@@ -107,7 +113,7 @@
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="inline-block align-baseline mr-1">
                   <path
                     d="M7 0C3.13306 0 0 3.13306 0 7C0 10.8669 3.13306 14 7 14C10.8669 14 14 10.8669 14 7C14 3.13306 10.8669 0 7 0ZM7 12.6452C3.88105 12.6452 1.35484 10.119 1.35484 7C1.35484 3.88105 3.88105 1.35484 7 1.35484C10.119 1.35484 12.6452 3.88105 12.6452 7C12.6452 10.119 10.119 12.6452 7 12.6452ZM8.74435 9.69839L6.34798 7.95685C6.26048 7.89193 6.20968 7.79032 6.20968 7.68306V3.04839C6.20968 2.8621 6.3621 2.70968 6.54839 2.70968H7.45161C7.6379 2.70968 7.79032 2.8621 7.79032 3.04839V7.04798L9.67581 8.41976C9.82823 8.52984 9.85927 8.74153 9.74919 8.89395L9.21855 9.625C9.10847 9.7746 8.89677 9.80847 8.74435 9.69839Z"
-                    fill="#F58020"
+                    fill="#cc2d3f"
                   ></path>
                 </svg>
                 <span>114 Phút</span>
@@ -116,7 +122,7 @@
                 <svg width="12" height="14" viewBox="0 0 12 14" fill="none" class="inline-block align-baseline mr-1">
                   <path
                     d="M10.7143 1.75H9.42857V0.328125C9.42857 0.147656 9.28393 0 9.10714 0H8.03571C7.85893 0 7.71429 0.147656 7.71429 0.328125V1.75H4.28571V0.328125C4.28571 0.147656 4.14107 0 3.96429 0H2.89286C2.71607 0 2.57143 0.147656 2.57143 0.328125V1.75H1.28571C0.575893 1.75 0 2.33789 0 3.0625V12.6875C0 13.4121 0.575893 14 1.28571 14H10.7143C11.4241 14 12 13.4121 12 12.6875V3.0625C12 2.33789 11.4241 1.75 10.7143 1.75ZM10.5536 12.6875H1.44643C1.35804 12.6875 1.28571 12.6137 1.28571 12.5234V4.375H10.7143V12.5234C10.7143 12.6137 10.642 12.6875 10.5536 12.6875Z"
-                    fill="#F58020"
+                    fill="#cc2d3f"
                   ></path>
                 </svg>
                 <span>30/01/2024</span>
@@ -129,7 +135,7 @@
                   focusable="false"
                   data-prefix="fas"
                   data-icon="star"
-                  class="svg-inline--fa fa-star w-5 text-primary mr-1 hover:text-primary transition duration-500 ease-in-out"
+                  class="svg-inline--fa fa-star w-5 hover:text-primary mr-1 text-primary-10 transition duration-500 ease-in-out"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 576 512"
@@ -146,15 +152,15 @@
               </a>
             </div>
             <div class="flex flex-col gap-1">
-              <div class="flex flex-nowrap text-sm">
+              <div class="flex flex-nowrap text-sm gap-4">
                 <span class="inline-block h-8 py-[6px] text-grey-40">Quốc gia:</span>
-                <span class="inline-block h-8 ml-4 py-[6px] capitalize not-italic">Việt Nam</span>
+                <span class="inline-block h-8 py-[6px] capitalize not-italic">Việt Nam</span>
               </div>
-              <div class="flex flex-nowrap items-center text-sm">
+              <div class="flex flex-nowrap items-center text-sm gap-4">
                 <span class="inline-block h-8 py-[6px] text-grey-40 flex-grow-0">Nhà sản xuất:</span>
-                <span class="inline-block h-8 ml-4 py-[6px] not-italic mr-2 text-grey-40">Đang cập nhật</span>
+                <span class="inline-block h-8 py-[6px] not-italic mr-2 text-grey-40">Đang cập nhật</span>
               </div>
-              <div class="flex flex-nowrap items-center text-sm">
+              <div class="flex flex-nowrap items-center text-sm gap-4">
                 <span class="inline-block h-8 py-[6px] text-grey-40 w-[70px] flex-grow-0">Thể loại:</span>
                 <ul class="ml-2 flex flex-wrap gap-1 flex-1">
                   <li class="inline-block">
@@ -167,7 +173,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="flex flex-nowrap items-center text-sm mt-2">
+              <div class="flex flex-nowrap items-center text-sm mt-2 gap-4">
                 <span class="inline-block h-8 py-[6px] text-grey-40 w-[70px] flex-grow-0">Đạo diễn:</span>
                 <ul class="ml-2 flex flex-wrap gap-1 flex-1">
                   <li class="inline-block">
@@ -180,7 +186,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="flex flex-nowrap items-center text-sm mt-2">
+              <div class="flex flex-nowrap items-center text-sm mt-2 gap-4">
                 <span class="inline-block h-8 py-[6px] text-grey-40 w-[70px] flex-grow-0">Diễn viên:</span>
                 <ul class="ml-2 flex flex-wrap gap-1 flex-1">
                   <li class="inline-block">
@@ -227,7 +233,7 @@
             />
             <div class="col-span-2 flex flex-col justify-center">
               <div class="item__title flex items-center">
-                <h1 class="text-[20px] md:text-[24px] lg:text-[28px] font-bold text-black-10 mr-4">Gặp Lại Chị Bầu</h1>
+                <h1 class="text-[20px] md:text-[24px] lg:text-[28px] font-bold text-white mr-4">Gặp Lại Chị Bầu</h1>
                 <span
                   class="inline-flex items-center justify-center w-[38px] h-7 bg-primary rounded text-sm text-center text-white font-bold not-italic"
                 >
@@ -346,9 +352,9 @@
           </div>
         </div>
         <div class="movie__content mt-3 lg:mt-0">
-          <span class="border-l-4 border-solid border-blue-10 mr-2"></span>
+          <span class="border-l-4 border-solid border-gold-10 mr-2"></span>
           <h1 class="mb-4 text-base inline-block capitalize font-bold">Nội dung phim</h1>
-          <div class="block__wysiwyg text-black-10 text-sm font-normal not-italic content__data__full">
+          <div class="block__wysiwyg text-white text-sm font-normal not-italic content__data__full">
             <p>
               <span style="font-family: Arial, Helvetica, sans-serif">
                 <span style="font-size: 14px">
@@ -362,7 +368,7 @@
             <p>
               <span style="font-size: 14px">
                 <span style="font-family: Arial, Helvetica, sans-serif">
-                  <a [routerLink]="['/phim-dang-chieu']"><em>Phim mới</em></a>
+                  <a class="text-gold-10" [routerLink]="['/phim-dang-chieu']"><em>Phim mới</em></a>
                   &nbsp;
                   <strong>Gặp Lại Chị Bầu</strong>
                   có suất chiếu sớm tại các
@@ -373,24 +379,24 @@
             </p>
           </div>
         </div>
-        <div class="movie__showtime">
+        <div class="movie__showtime mt-10 p-5 rounded-2xl bg-white">
           <div class="movie__showtime-header">
-            <span class="border-l-4 border-solid border-blue-10 mr-2"></span>
-            <h1 class="mb-4 text-base inline-block capitalize font-bold">Lịch chiếu</h1>
+            <span class="border-l-4 border-solid border-blue-90 mr-2"></span>
+            <h1 class="mb-4 text-base inline-block capitalize font-bold text-black">Lịch chiếu</h1>
           </div>
 
-          <nz-tabset [nzTabBarExtraContent]="extraTemplate">
+          <nz-tabset [nzTabBarExtraContent]="extraTemplate" nzType="card">
             @for (tab of tabs; track tab) {
               <nz-tab [nzTitle]="tab.lichChieu">
                 <div
-                  class="showtime__cinema md:py-8 py-4 px-3 odd:bg-white even:bg-[#FDFBFA] even:border-t even:border-b"
+                  class="showtime__cinema text-black-10 md:py-8 py-4 px-3 rounded odd:bg-white even:bg-[#FDFBFA] even:border-t even:border-b"
                 >
-                  <h1 class="text-base font-bold mb-4">{{ tab.rap }}</h1>
+                  <h1 class="text-base text-black-10 font-bold mb-4">{{ tab.rap }}</h1>
                   <div class="showtime__bundle flex md:flex-row flex-col gap-2 items-start mb-6">
-                    <label class="text-sm font-semibold text-grey-10 mt-2 w-[150px]">{{ tab.phong }}</label>
+                    <label class="text-sm font-semibold mt-2 w-[150px]">{{ tab.phong }}</label>
                     <div class="time__show flex flex-1 flex-row gap-x-3 gap-y-1 flex-wrap">
                       <button
-                        class="py-2 md:px-8 px-6 border rounded text-sm font-normal text-black-10 hover:bg-blue-10 active:bg-blue-10 transition-all duration-500 ease-in-out hover:text-white"
+                        class="py-2 md:px-8 px-6 border rounded text-sm font-normal text-black hover:bg-blue-90 active:bg-gold-10 transition-all duration-500 ease-in-out hover:text-white"
                       >
                         {{ tab.gioChieu }}
                       </button>
@@ -401,11 +407,7 @@
             }
           </nz-tabset>
           <ng-template #extraTemplate>
-            <nz-select ngModel="toanQuoc">
-              <nz-option nzValue="haNoi" nzLabel="Hà Nội"></nz-option>
-              <nz-option nzValue="hcm" nzLabel="TP.Hồ Chí Minh"></nz-option>
-              <nz-option nzValue="toanQuoc" nzLabel="Toàn quốc"></nz-option>
-            </nz-select>
+            <nz-select [(ngModel)]="selectedProvince" [nzOptions]="listOfProvince"></nz-select>
             <nz-select ngModel="tatCaRap">
               <nz-option nzValue="quangTrung" nzLabel="N95 Quang Trung"></nz-option>
               <nz-option nzValue="leVanViet" nzLabel="N95 Lê Văn Việt"></nz-option>
@@ -415,207 +417,115 @@
         </div>
       </div>
 
-      <div class="movie__content mb-8" id="target">
-        <span class="border-l-4 border-solid border-blue-10 mr-2"></span>
+      <div class="movie__content my-10" id="target">
+        <span class="border-l-4 border-solid border-gold-10 mr-2"></span>
         <h1 class="mb-4 text-lg inline-block uppercase font-medium">Đánh giá phim</h1>
         <div class="grid grid-cols-1 items-center">
           <div class="flex flex-col grow col-span-3">
             <div class="flex md:justify-between justify-center items-start">
-              <div>
-                <div class="star-rating transition-all duration-300 ease-in-out block">
-                  <div class="star-container">
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                    <span class="star">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        version="1.1"
-                        id="Layer_1"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        width="24"
-                        height="24"
-                        class="inline-block"
-                      >
-                        <path
-                          fill="#A0A3A7"
-                          d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
-                        ></path>
-                      </svg>
-                    </span>
-                  </div>
+              <div class="star-rating transition-all duration-300 ease-in-out block">
+                <div class="star-container">
+                  <span class="star">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      version="1.1"
+                      id="Layer_1"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                      width="24"
+                      height="24"
+                      class="inline-block"
+                    >
+                      <path
+                        fill="#A0A3A7"
+                        d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span class="star">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      version="1.1"
+                      id="Layer_1"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                      width="24"
+                      height="24"
+                      class="inline-block"
+                    >
+                      <path
+                        fill="#A0A3A7"
+                        d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span class="star">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      version="1.1"
+                      id="Layer_1"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                      width="24"
+                      height="24"
+                      class="inline-block"
+                    >
+                      <path
+                        fill="#A0A3A7"
+                        d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span class="star">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      version="1.1"
+                      id="Layer_1"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                      width="24"
+                      height="24"
+                      class="inline-block"
+                    >
+                      <path
+                        fill="#A0A3A7"
+                        d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span class="star">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      version="1.1"
+                      id="Layer_1"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                      width="24"
+                      height="24"
+                      class="inline-block"
+                    >
+                      <path
+                        fill="#A0A3A7"
+                        d="M15.868,28.234l-2.33,9.757c-0.094,0.391,0.057,0.8,0.38,1.038c0.324,0.237,0.757,0.26,1.104,0.054  l8.762-5.203l8.758,5.203c0.158,0.094,0.335,0.141,0.511,0.141c0.209,0,0.417-0.065,0.593-0.194c0.323-0.238,0.474-0.647,0.38-1.038  l-2.33-9.757l7.734-6.554c0.309-0.261,0.43-0.683,0.306-1.068c-0.123-0.385-0.467-0.658-0.87-0.691L28.665,19.08l-3.963-9.25  c-0.157-0.368-0.519-0.606-0.919-0.606s-0.762,0.238-0.919,0.606l-3.966,9.25L8.7,19.921c-0.403,0.033-0.747,0.306-0.87,0.691  c-0.124,0.385-0.003,0.807,0.306,1.068L15.868,28.234z M19.662,21.023c0.369-0.03,0.691-0.262,0.837-0.603l3.284-7.659l3.28,7.658  c0.146,0.341,0.468,0.573,0.837,0.603l8.394,0.692l-6.361,5.391c-0.288,0.243-0.414,0.628-0.326,0.995l1.924,8.055l-7.236-4.299  c-0.314-0.188-0.707-0.188-1.021,0l-7.24,4.3l1.924-8.056c0.088-0.367-0.038-0.752-0.326-0.995l-6.359-5.391L19.662,21.023z"
+                      ></path>
+                    </svg>
+                  </span>
                 </div>
               </div>
             </div>
             <textarea
-              class="p-3 border rounded focus:outline-none text-sm mt-3 resize-y"
+              class="p-3 border rounded focus:outline-none text-sm mt-3 resize-y text-black"
               placeholder="Thêm đánh giá"
               cols="10"
               rows="3"
             ></textarea>
             <a
-              class="button-text-white block mt-4 text-sm px-[14px] py-[7px] border rounded border-primary bg-primary capitalize cursor-pointer transition duration-500 ease-in-out text-center"
+              class="button-text-white block mt-4 text-sm px-4 py-2 rounded bg-primary hover:bg-primary-10 capitalize cursor-pointer transition duration-500 ease-in-out text-center"
             >
               <svg
                 aria-hidden="true"
@@ -641,7 +551,7 @@
 
     <div class="hidden screen1200:block lg:col-span-2 w-full overflow-hidden">
       <div class="mb-4">
-        <span class="border-l-4 border-solid border-blue-10 mr-2"></span>
+        <span class="border-l-4 border-solid border-gold-10 mr-2"></span>
         <h1 class="text-xl inline-block uppercase font-semibold">Phim đang chiếu</h1>
       </div>
       <div class="movie__content">
@@ -656,7 +566,7 @@
                     <div class="card__hover__content flex flex-col justify-center items-center w-full h-full">
                       <a
                         type="button"
-                        class="button-text-white bg-[#f26b38] w-[120px] h-[40px] hover:bg-[#fb9440] rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#fb9440] dark:focus:ring-[#fb9440]"
+                        class="button-text-white bg-primary w-[120px] h-[40px] hover:bg-primary-10 rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-primary-10 dark:focus:ring-primary-10"
                       >
                         <img
                           alt="Logo Buy Ticket"
@@ -709,11 +619,11 @@
                     </p>
                   </div>
                   <div class="age__limit absolute bottom-[6px] right-[6px]">
-                    <span class="bg-[#F58020] px-1 py-[2px] text-sm text-white font-bold not-italic rounded">K</span>
+                    <span class="bg-primary px-1 py-[2px] text-sm text-white font-bold not-italic rounded">K</span>
                   </div>
                 </div>
               </div>
-              <div class="Card_card__title__kFoFc mt-2" style="width: 400px">
+              <div class="Card_card__title__kFoFc mt-2 text-white" style="width: 400px">
                 <a type="button" class="text-sm font-semibold not-italic w-[400px]" href="/dat-ve/sang-den/">
                   Sáng Đèn
                 </a>
@@ -730,7 +640,7 @@
                     <div class="card__hover__content flex flex-col justify-center items-center w-full h-full">
                       <a
                         type="button"
-                        class="button-text-white bg-[#f26b38] w-[120px] h-[40px] hover:bg-[#fb9440] rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#fb9440] dark:focus:ring-[#fb9440]"
+                        class="button-text-white bg-primary w-[120px] h-[40px] hover:bg-primary-10 rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-primary-10 dark:focus:ring-prbg-primary-10"
                       >
                         <img
                           alt="Logo Buy Ticket"
@@ -783,11 +693,11 @@
                     </p>
                   </div>
                   <div class="age__limit absolute bottom-[6px] right-[6px]">
-                    <span class="bg-[#F58020] px-1 py-[2px] text-sm text-white font-bold not-italic rounded">T16</span>
+                    <span class="bg-primary px-1 py-[2px] text-sm text-white font-bold not-italic rounded">T16</span>
                   </div>
                 </div>
               </div>
-              <div class="Card_card__title__kFoFc mt-2" style="width: 400px">
+              <div class="Card_card__title__kFoFc mt-2 text-white" style="width: 400px">
                 <a type="button" class="text-sm font-semibold not-italic w-[400px]" href="/dat-ve/exhuma/">
                   Exhuma: Quật Mộ Trùng Ma
                 </a>
@@ -804,7 +714,7 @@
                     <div class="card__hover__content flex flex-col justify-center items-center w-full h-full">
                       <a
                         type="button"
-                        class="button-text-white bg-[#f26b38] w-[120px] h-[40px] hover:bg-[#fb9440] rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#fb9440] dark:focus:ring-[#fb9440]"
+                        class="button-text-white bg-primary w-[120px] h-[40px] hover:bg-primary-10 rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-primary-10 dark:focus:ring-primary-10"
                       >
                         <img
                           alt="Logo Buy Ticket"
@@ -858,7 +768,7 @@
                   </div>
                 </div>
               </div>
-              <div class="Card_card__title__kFoFc mt-2" style="width: 400px">
+              <div class="Card_card__title__kFoFc mt-2 text-white" style="width: 400px">
                 <a type="button" class="text-sm font-semibold not-italic w-[400px]" href="/dat-ve/kung-fu-panda-4/">
                   Kung Fu Panda 4
                 </a>
@@ -869,7 +779,7 @@
         <div class="text-end">
           <a
             type="button"
-            class="button-readmore w-40 border border-[#fb9440] hover:bg-[#fb9440] transition-all duration-300 focus:ring-1 focus:outline-none focus:ring-[#fb9440] rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#fb9440] dark:focus:ring-[#fb9440] mr-2 mb-2 justify-center"
+            class="button-readmore w-40 border border-primary hover:bg-primary transition-all duration-300 focus:ring-1 focus:outline-none focus:ring-primary rounded text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-primary dark:focus:ring-primary mr-2 mb-2 justify-center"
             href="/phim-dang-chieu/"
           >
             Xem thêm

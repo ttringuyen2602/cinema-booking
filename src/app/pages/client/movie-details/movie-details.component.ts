@@ -6,6 +6,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal'
 import { HeaderComponent } from '@src/app/components/header/header.component'
 import { FooterComponent } from '@src/app/components/footer/footer.component'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-movie-details',
@@ -13,6 +14,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
   imports: [
     RouterOutlet,
     RouterLink,
+    FormsModule,
     NzTabsModule,
     NzSelectModule,
     NzModalModule,
@@ -27,6 +29,12 @@ export class MovieDetailsComponent implements OnInit {
   isToggleTrailer: boolean = false
   url: string = '/assets/data.json'
   dataExample: any
+  selectedProvince = 'toanQuoc'
+  listOfProvince = [
+    { label: 'Hà Nội', value: 'haNoi' },
+    { label: 'Hồ Chí Minh', value: 'hcm' },
+    { label: 'Toàn quốc', value: 'toanQuoc' }
+  ]
 
   constructor(private httpClient: HttpClient) {}
 

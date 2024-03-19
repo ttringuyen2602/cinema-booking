@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "assets/themify-icons/themify-icons.css";
-@import "assets/fontawesome-free-6.4.0-web/css/all.min.css";
+@import 'assets/themify-icons/themify-icons.css';
+@import 'assets/fontawesome-free-6.4.0-web/css/all.min.css';
 
 :root {
   --back-ground-color: #0e1226;
@@ -71,7 +71,12 @@ ul {
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--text-color);
 }
 
@@ -87,4 +92,52 @@ h1, h2, h3, h4, h5, h6 {
   height: 14px !important;
   border-radius: 50% !important;
   box-shadow: 0 0 2px 1px rgb(145 145 145);
+}
+
+.ant-tabs-card {
+  > .ant-tabs-nav,
+  > div {
+    .ant-tabs-tab {
+      background-color: #ecedee;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+}
+
+.ant-tabs-card {
+  > .ant-tabs-nav {
+    .ant-tabs-tab.ant-tabs-tab-active {
+      background-color: #18223f;
+      color: #ffffff;
+    }
+  }
+  > div {
+    > .ant-tabs-nav {
+      .ant-tabs-tab {
+        background-color: #18223f;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.ant-tabs-tab {
+  &.ant-tabs-tab-active {
+    .ant-tabs-tab-btn {
+      color: #ffffff;
+    }
+  }
+}
+
+.ant-tabs-card {
+  .ant-tabs-top {
+    > .ant-tabs-nav {
+      .ant-tabs-tab {
+        border-radius: 4px;
+      }
+    }
+  }
 }
