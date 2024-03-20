@@ -22,6 +22,10 @@ module.exports = {
         grey: {
           20: '#d0d0d0',
           40: '#8c909e'
+        },
+        white: {
+          244: 'rgb(244,244,244)',
+          250: 'rgb(244,244,244)'
         }
       },
       screens: {

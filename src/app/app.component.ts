@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router'
+import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router'
 import { Location } from '@angular/common'
-import {PATH} from 'src/app/constant/pathConstant'
+import { PATH } from '@src/app/constants/pathConstant'
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import {PATH} from 'src/app/constant/pathConstant'
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  isAdmin = false;
+  isAdmin = false
 
   constructor(
     private location2: Location,
@@ -18,11 +18,11 @@ export class AppComponent {
   ) {
     this.router.events.subscribe((event) => {
       console.log(event)
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationStart) {
         if (location2.path().includes(PATH.admin)) {
-          this.isAdmin = true;
+          this.isAdmin = true
         }
       }
-  });
+    })
   }
 }

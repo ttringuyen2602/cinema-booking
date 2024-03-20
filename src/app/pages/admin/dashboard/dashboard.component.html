@@ -1,7 +1,6 @@
-<nz-layout class="flex-row">
-  <app-sidebar-menu [isCollapsed]="isCollapsed" />
+<app-sidebar-menu>
   <nz-layout>
-    <app-header-admin [isCollapsed]="isCollapsed" />
+    <app-header-admin />
 
     <nz-content>
       <nz-breadcrumb>
@@ -12,6 +11,6 @@
     </nz-content>
     <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
   </nz-layout>
-</nz-layout>
+</app-sidebar-menu>
 
 <router-outlet></router-outlet>

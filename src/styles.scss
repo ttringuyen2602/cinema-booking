@@ -31,12 +31,24 @@ img {
   width: 100%;
 }
 
-.--show {
-  display: block !important;
+.back-ground-color {
+  color: var(--back-ground-color);
 }
 
-.--hide {
-  display: none !important;
+.text-color {
+  color: var(--text-color);
+}
+
+.orange-color {
+  color: var(--orange-color);
+}
+
+.des-text-color {
+  color: var(--des-text-color);
+}
+
+.my-red-color {
+  color: var(--my-red-color);
 }
 
 .app {
@@ -60,7 +72,7 @@ img {
 }
 
 a {
-  color: inherit;
+  color: var(--text-color);
 }
 
 menu,
@@ -140,4 +152,17 @@ h6 {
       }
     }
   }
+}
+
+nz-content {
+  margin: 0 16px;
+}
+
+.inner-content {
+  background: #fff;
+  min-height: 500px;
+}
+
+nz-footer {
+  text-align: center;
 }

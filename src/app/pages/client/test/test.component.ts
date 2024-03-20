@@ -1,120 +1,130 @@
 import { Component } from '@angular/core';
+
 import {
-  NzContentComponent,
-  NzFooterComponent,
-  NzHeaderComponent,
-  NzLayoutComponent,
-  NzSiderComponent
-} from 'ng-zorro-antd/layout'
-import { NzMenuDirective, NzMenuItemComponent, NzSubMenuComponent } from 'ng-zorro-antd/menu'
-import { NzIconDirective } from 'ng-zorro-antd/icon'
-import { NzBreadCrumbComponent, NzBreadCrumbItemComponent } from 'ng-zorro-antd/breadcrumb'
+  NzTableComponent,
+  NzTableFilterFn,
+  NzTableFilterList,
+  NzTableSortFn,
+  NzTableSortOrder, NzThAddOnComponent,
+  NzTableModule
+} from 'ng-zorro-antd/table'
+import { RouterOutlet } from '@angular/router'
+import { NgForOf } from '@angular/common'
+
+interface DataItem {
+  name: string;
+  age: number;
+  address: string;
+}
+
+interface ColumnItem {
+  name: string;
+  sortOrder: NzTableSortOrder | null;
+  sortFn: NzTableSortFn<DataItem> | null;
+  listOfFilter: NzTableFilterList;
+  filterFn: NzTableFilterFn<DataItem> | null;
+  filterMultiple: boolean;
+  sortDirections: NzTableSortOrder[];
+}
 
 @Component({
-  selector: 'nz-demo-layout-custom-trigger',
-  template: `
-    <nz-layout>
-      <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-        <div class="logo"></div>
-        <ul nz-menu nzTheme="dark" nzMode="inline">
-          <li nz-submenu nzTitle="User" nzIcon="user">
-            <ul>
-              <li nz-menu-item>Tom</li>
-              <li nz-menu-item>Bill</li>
-              <li nz-menu-item>Alex</li>
-            </ul>
-          </li>
-          <li nz-submenu nzTitle="Team" nzIcon="team">
-            <ul>
-              <li nz-menu-item>Team 1</li>
-              <li nz-menu-item>Team 2</li>
-            </ul>
-          </li>
-          <li nz-menu-item>
-            <span nz-icon nzType="file"></span>
-            <span>File</span>
-          </li>
-        </ul>
-      </nz-sider>
-      <nz-layout>
-        <nz-header>
-          <span
-            class="trigger"
-            nz-icon
-            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            (click)="isCollapsed = !isCollapsed"
-          ></span>
-        </nz-header>
-        <nz-content>
-          <nz-breadcrumb>
-            <nz-breadcrumb-item>User</nz-breadcrumb-item>
-            <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-          </nz-breadcrumb>
-          <div class="inner-content">Bill is a cat.</div>
-        </nz-content>
-        <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
-      </nz-layout>
-    </nz-layout>
-  `,
+  selector: 'app-test',
   standalone: true,
   imports: [
-    NzSiderComponent,
-    NzLayoutComponent,
-    NzMenuDirective,
-    NzSubMenuComponent,
-    NzMenuItemComponent,
-    NzIconDirective,
-    NzHeaderComponent,
-    NzContentComponent,
-    NzBreadCrumbItemComponent,
-    NzBreadCrumbComponent,
-    NzFooterComponent
+    NzTableModule,
+    NzTableComponent,
+    NzThAddOnComponent,
+    RouterOutlet,
+    NgForOf
   ],
-  styles: [
-    `
-      .trigger {
-        font-size: 18px;
-        line-height: 64px;
-        padding: 0 24px;
-        cursor: pointer;
-        transition: color 0.3s;
-      }
+  template: `
+    <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
+      <thead>
+      <tr>
+        @for(column of listOfColumns; track i; let i = $index) {
+          <th
+            [nzSortOrder]="column.sortOrder"
+            [nzSortFn]="column.sortFn"
+            [nzSortDirections]="column.sortDirections"
+            [nzFilterMultiple]="column.filterMultiple"
+            [nzFilters]="column.listOfFilter"
+            [nzFilterFn]="column.filterFn"
+          >
+            {{ column.name }}
+          </th>
+        }
 
-      .trigger:hover {
-        color: #1890ff;
-      }
-
-      .logo {
-        height: 32px;
-        background: rgba(255, 255, 255, 0.2);
-        margin: 16px;
-      }
-
-      nz-header {
-        background: #fff;
-        padding: 0;
-      }
-
-      nz-content {
-        margin: 0 16px;
-      }
-
-      nz-breadcrumb {
-        margin: 16px 0;
-      }
-
-      .inner-content {
-        padding: 24px;
-        background: #fff;
-        min-height: 360px;
-      }
-
-      nz-footer {
-        text-align: center;
-      }
-    `
-  ]
+      </tr>
+      </thead>
+      <tbody>
+        @for(data of filterTable.data; track i; let i = $index) {
+          <tr>
+            <td>{{ data.name }}</td>
+            <td>{{ data.age }}</td>
+            <td>{{ data.address }}</td>
+          </tr>
+        }
+      </tbody>
+    </nz-table>
+    <router-outlet></router-outlet>
+  `
 })
 export class TestComponent {
-  isCollapsed = false;
+  listOfColumns: ColumnItem[] = [
+    {
+      name: 'Name',
+      sortOrder: null,
+      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),
+      sortDirections: ['ascend', 'descend', null],
+      filterMultiple: true,
+      listOfFilter: [
+        { text: 'Joe', value: 'Joe' },
+        { text: 'Jim', value: 'Jim', byDefault: true }
+      ],
+      filterFn: (list: string[], item: DataItem) => list.some(name => item.name.indexOf(name) !== -1)
+    },
+    {
+      name: 'Age',
+      sortOrder: 'descend',
+      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,
+      sortDirections: ['descend', null],
+      listOfFilter: [],
+      filterFn: null,
+      filterMultiple: true
+    },
+    {
+      name: 'Address',
+      sortOrder: null,
+      sortDirections: ['ascend', 'descend', null],
+      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,
+      filterMultiple: false,
+      listOfFilter: [
+        { text: 'London', value: 'London' },
+        { text: 'Sidney', value: 'Sidney' }
+      ],
+      filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    }
+  ];
+  listOfData: DataItem[] = [
+    {
+      name: 'John Brown',
+      age: 32,
+      address: 'New York No. 1 Lake Park'
+    },
+    {
+      name: 'Jim Green',
+      age: 42,
+      address: 'London No. 1 Lake Park'
+    },
+    {
+      name: 'Joe Black',
+      age: 32,
+      address: 'Sidney No. 1 Lake Park'
+    },
+    {
+      name: 'Jim Red',
+      age: 32,
+      address: 'London No. 2 Lake Park'
+    }
+  ];
 }

@@ -1,43 +1,49 @@
-<nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed">
-  <div class="logo">
-    <h1>N95 Cinema</h1>
-  </div>
-  <ul nz-menu nzTheme="dark" nzMode="inline" class="h-screen">
-    <li nz-menu-item>
-      <span nz-icon nzType="home"></span>
-      <span>Dashboard</span>
-    </li>
-    <li nz-submenu nzTitle="Quản lý Phim" nzIcon="menu">
-      <ul>
-        <li nz-menu-item>Tom</li>
-        <li nz-menu-item>Bill</li>
-        <li nz-menu-item>Alex</li>
-      </ul>
-    </li>
-    <li nz-submenu nzTitle="Quản lý Rạp" nzIcon="menu">
-      <ul>
-        <li nz-menu-item>Team 1</li>
-        <li nz-menu-item>Team 2</li>
-      </ul>
-    </li>
-    <li nz-submenu nzTitle="Quản lý Lịch Chiếu 123123" nzIcon="menu" title="Quản lý Lịch Chiếu123123">
-      <ul>
-        <li nz-menu-item>Team 1</li>
-        <li nz-menu-item>Team 2</li>
-      </ul>
-    </li>
-    <li nz-menu-item>
-      <span nz-icon nzType="user"></span>
-      <span>Tài Khoản</span>
-    </li>
-    <li nz-menu-item routerLink="roles">
-      <span nz-icon nzType="block"></span>
-      <span>Roles</span>
-    </li>
-    <li nz-menu-item class="bottom-0">
-      <span nz-icon><i class="fa-solid fa-right-from-bracket"></i></span>
-      <span class="ml-[10px]">Đăng xuất</span>
-    </li>
+<nz-layout>
+  <nz-sider  nzCollapsible [(nzCollapsed)]="isCollapsed">
+<!--    <nz-affix>-->
+      <div class="logo">
+        <a href="/">N95 Cinema</a>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" class="h-screen">
+        <li nz-menu-item>
+          <span nz-icon nzType="home"></span>
+          <span>Dashboard</span>
+        </li>
+        <li nz-submenu nzTitle="Quản lý Phim" nzIcon="menu">
+          <ul>
+            <li nz-menu-item>Tom</li>
+            <li nz-menu-item>Bill</li>
+            <li nz-menu-item>Alex</li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="Quản lý Rạp" nzIcon="menu">
+          <ul>
+            <li nz-menu-item>Team 1</li>
+            <li nz-menu-item>Team 2</li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="Quản lý Lịch Chiếu 123123" nzIcon="menu" title="Quản lý Lịch Chiếu123123">
+          <ul>
+            <li nz-menu-item>Team 1</li>
+            <li nz-menu-item>Team 2</li>
+          </ul>
+        </li>
+        <li nz-menu-item>
+          <span nz-icon nzType="user"></span>
+          <span>Tài Khoản</span>
+        </li>
+        <li nz-menu-item routerLink="roles">
+          <span nz-icon nzType="block"></span>
+          <span>Roles</span>
+        </li>
+        <li nz-menu-item class="bottom-0">
+          <span nz-icon><i class="fa-solid fa-right-from-bracket"></i></span>
+          <span class="ml-[10px]">Đăng xuất</span>
+        </li>
 
-  </ul>
-</nz-sider>
+      </ul>
+<!--    </nz-affix>-->
+  </nz-sider>
+
+  <ng-content></ng-content>
+</nz-layout>
