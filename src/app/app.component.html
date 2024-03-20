@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+@if (isAdmin) {
+  <router-outlet></router-outlet>
+} @else {
+  <div class="app">
+    <router-outlet></router-outlet>
+  </div>
+}

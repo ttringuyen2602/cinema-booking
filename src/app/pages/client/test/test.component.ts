@@ -1,81 +1,120 @@
 import { Component } from '@angular/core';
-
 import {
-    NZ_CAROUSEL_CUSTOM_STRATEGIES, NzCarouselComponent, NzCarouselContentDirective,
-    NzCarouselFlipStrategy,
-    NzCarouselTransformNoLoopStrategy
-} from "ng-zorro-antd/carousel";
-import { FormsModule } from "@angular/forms";
-import { NzRadioModule } from "ng-zorro-antd/radio";
-import { RouterOutlet } from "@angular/router";
+  NzContentComponent,
+  NzFooterComponent,
+  NzHeaderComponent,
+  NzLayoutComponent,
+  NzSiderComponent
+} from 'ng-zorro-antd/layout'
+import { NzMenuDirective, NzMenuItemComponent, NzSubMenuComponent } from 'ng-zorro-antd/menu'
+import { NzIconDirective } from 'ng-zorro-antd/icon'
+import { NzBreadCrumbComponent, NzBreadCrumbItemComponent } from 'ng-zorro-antd/breadcrumb'
 
 @Component({
-    selector: 'nz-demo-carousel-custom',
-    standalone: true,
-    imports: [FormsModule, NzRadioModule, NzCarouselComponent, RouterOutlet, NzCarouselContentDirective],
-    template: `
-    <nz-radio-group [(ngModel)]="strategy">
-      <label nz-radio-button nzValue="fade">Fade (built-in)</label>
-    </nz-radio-group>
-        <nz-carousel class="carousel--animate" [nzEffect]="'fade'" nzTransitionSpeed="2000">
-      @for (index of array; track index) {
-        <div nz-carousel-content>
-          <h3>{{ index }}</h3>
-        </div>
-      }
-    </nz-carousel>
-    <router-outlet></router-outlet>
-    `,
-    styles: [
-        `
-      nz-radio-group {
-        margin-bottom: 8px;
+  selector: 'nz-demo-layout-custom-trigger',
+  template: `
+    <nz-layout>
+      <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+        <div class="logo"></div>
+        <ul nz-menu nzTheme="dark" nzMode="inline">
+          <li nz-submenu nzTitle="User" nzIcon="user">
+            <ul>
+              <li nz-menu-item>Tom</li>
+              <li nz-menu-item>Bill</li>
+              <li nz-menu-item>Alex</li>
+            </ul>
+          </li>
+          <li nz-submenu nzTitle="Team" nzIcon="team">
+            <ul>
+              <li nz-menu-item>Team 1</li>
+              <li nz-menu-item>Team 2</li>
+            </ul>
+          </li>
+          <li nz-menu-item>
+            <span nz-icon nzType="file"></span>
+            <span>File</span>
+          </li>
+        </ul>
+      </nz-sider>
+      <nz-layout>
+        <nz-header>
+          <span
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            (click)="isCollapsed = !isCollapsed"
+          ></span>
+        </nz-header>
+        <nz-content>
+          <nz-breadcrumb>
+            <nz-breadcrumb-item>User</nz-breadcrumb-item>
+            <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+          </nz-breadcrumb>
+          <div class="inner-content">Bill is a cat.</div>
+        </nz-content>
+        <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+      </nz-layout>
+    </nz-layout>
+  `,
+  standalone: true,
+  imports: [
+    NzSiderComponent,
+    NzLayoutComponent,
+    NzMenuDirective,
+    NzSubMenuComponent,
+    NzMenuItemComponent,
+    NzIconDirective,
+    NzHeaderComponent,
+    NzContentComponent,
+    NzBreadCrumbItemComponent,
+    NzBreadCrumbComponent,
+    NzFooterComponent
+  ],
+  styles: [
+    `
+      .trigger {
+        font-size: 18px;
+        line-height: 64px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: color 0.3s;
       }
 
-      [nz-carousel-content] {
+      .trigger:hover {
+        color: #1890ff;
+      }
+
+      .logo {
+        height: 32px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 16px;
+      }
+
+      nz-header {
+        background: #fff;
+        padding: 0;
+      }
+
+      nz-content {
+        margin: 0 16px;
+      }
+
+      nz-breadcrumb {
+        margin: 16px 0;
+      }
+
+      .inner-content {
+        padding: 24px;
+        background: #fff;
+        min-height: 360px;
+      }
+
+      nz-footer {
         text-align: center;
-        height: 160px;
-        line-height: 160px;
-        background: #364d79;
-        color: #fff;
-        overflow: hidden;
-        transition: all 2.5s ease-out;
       }
-
-      h3 {
-        color: #fff;
-        margin-bottom: 0;
-        user-select: none;
-      }
-
-      .carousel--animate .slick-active {
-          animation: zoomInOut 2.5s ease-out;
-      }
-
-      @keyframes zoomInOut {
-          22% {
-              transform: scale(1.02);
-              opacity: 0;
-          }
-
-          100% {
-              transform: scale(1);
-              opacity: 1;
-          }
-      }
-        `
-    ],
-    providers: [
-        {
-            provide: NZ_CAROUSEL_CUSTOM_STRATEGIES,
-            useValue: [
-                { name: 'transform-no-loop', strategy: NzCarouselTransformNoLoopStrategy },
-                { name: 'flip', strategy: NzCarouselFlipStrategy }
-            ]
-        }
-    ]
+    `
+  ]
 })
 export class TestComponent {
-    public strategy = 'transform-no-loop';
-    public array = [1, 2, 3, 4];
+  isCollapsed = false;
 }
