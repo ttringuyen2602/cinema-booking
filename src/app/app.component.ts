@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router'
+import { NavigationStart, Router, RouterOutlet } from '@angular/router'
 import { Location } from '@angular/common'
 import { PATH } from '@src/app/constants/pathConstant'
 
@@ -12,12 +12,11 @@ import { PATH } from '@src/app/constants/pathConstant'
 export class AppComponent {
   isAdmin = false
 
-  constructor(
-    private location2: Location,
-    private router: Router
+  constructor(private location2: Location,
+              private router: Router
   ) {
-    this.router.events.subscribe((event) => {
-      console.log(event)
+    router.events.subscribe((event) => {
+      // console.log(event)
       if (event instanceof NavigationStart) {
         if (location2.path().includes(PATH.admin)) {
           this.isAdmin = true

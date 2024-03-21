@@ -33,6 +33,7 @@ export class TicketComponent implements OnInit {
     {
       name: 'STT',
       sortOrder: null,
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),
       listOfFilter: [
         { text: 'Edward King 1', value: 'King 1' },
@@ -43,12 +44,14 @@ export class TicketComponent implements OnInit {
     {
       name: 'Loại Vé',
       sortOrder: null,
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => a.age - b.age,
       listOfFilter: [],
       filterFn: null
     },
     {
       name: 'Ngày Chiếu',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
       sortOrder: null,
       listOfFilter: [
@@ -59,6 +62,7 @@ export class TicketComponent implements OnInit {
     },
     {
       name: 'Giờ Chiếu',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
       sortOrder: null,
       listOfFilter: [
@@ -69,6 +73,7 @@ export class TicketComponent implements OnInit {
     },
     {
       name: 'Phòng',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
       sortOrder: null,
       listOfFilter: [
@@ -79,6 +84,7 @@ export class TicketComponent implements OnInit {
     },
     {
       name: 'Số Ghế',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
       sortOrder: null,
       listOfFilter: [
@@ -89,6 +95,7 @@ export class TicketComponent implements OnInit {
     },
     {
       name: 'Tổng Tiền Vé',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
       sortOrder: null,
       listOfFilter: [

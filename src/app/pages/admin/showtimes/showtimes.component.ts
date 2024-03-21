@@ -31,6 +31,7 @@ import { DataItem } from '@src/app/models/DataItem'
 export class ShowtimesComponent implements OnInit {
   listOfColumns: ColumnItem[] = [
     {
+      width: '',
       name: 'STT',
       sortOrder: null,
       sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),
@@ -41,6 +42,7 @@ export class ShowtimesComponent implements OnInit {
       filterFn: (list: string[], item: DataItem) => list.some((name) => item.name.indexOf(name) !== -1)
     },
     {
+      width: '',
       name: 'Tên Phim',
       sortOrder: null,
       sortFn: (a: DataItem, b: DataItem) => a.age - b.age,
@@ -49,6 +51,7 @@ export class ShowtimesComponent implements OnInit {
     },
     {
       name: 'Ngày Khởi Chiếu',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => (a.address > b.address ? 1 : 0),
       sortOrder: null,
       listOfFilter: [
@@ -59,6 +62,7 @@ export class ShowtimesComponent implements OnInit {
     },
     {
       name: 'Giờ Bắt Đầu',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => (a.address > b.address ? 1 : 0),
       sortOrder: null,
       listOfFilter: [
@@ -69,6 +73,7 @@ export class ShowtimesComponent implements OnInit {
     },
     {
       name: 'Phòng',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => (a.address > b.address ? 1 : 0),
       sortOrder: null,
       listOfFilter: [
@@ -79,6 +84,7 @@ export class ShowtimesComponent implements OnInit {
     },
     {
       name: 'Phụ Phí',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => (a.address > b.address ? 1 : 0),
       sortOrder: null,
       listOfFilter: [
@@ -89,6 +95,7 @@ export class ShowtimesComponent implements OnInit {
     },
     {
       name: 'Trạng Thái',
+      width: '',
       sortFn: (a: DataItem, b: DataItem) => (a.address > b.address ? 1 : 0),
       sortOrder: null,
       listOfFilter: [

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ToggleAdminMenuService } from './toggle-admin-menu.service';
+import { AdminMenuService } from './admin-menu.service';
 
 describe('ToggleAdminMenuService', () => {
-  let service: ToggleAdminMenuService;
+  let service: AdminMenuService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ToggleAdminMenuService);
+    service = TestBed.inject(AdminMenuService);
   });
 
   it('should be created', () => {

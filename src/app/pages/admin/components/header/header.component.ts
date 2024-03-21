@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { NzIconDirective } from 'ng-zorro-antd/icon'
 import { NzHeaderComponent } from 'ng-zorro-antd/layout'
-import { ToggleAdminMenuService } from '@src/app/services/toggle-admin-menu.service'
+import { AdminMenuService } from '@src/app/services/admin-menu.service'
 
 
 @Component({
@@ -14,7 +14,7 @@ import { ToggleAdminMenuService } from '@src/app/services/toggle-admin-menu.serv
 export class HeaderAdminComponent implements OnInit {
   isCollapsed = false;
 
-  constructor(private toggleAdminMenuService: ToggleAdminMenuService) {
+  constructor(private toggleAdminMenuService: AdminMenuService) {
   }
 
   ngOnInit(): void {

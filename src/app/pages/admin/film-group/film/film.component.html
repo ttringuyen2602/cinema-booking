@@ -1,1 +1,148 @@
-<p>film works!</p>
+<app-sidebar-menu>
+  <nz-layout>
+    <app-header-admin />
+
+    <nz-content>
+      <div class="flex justify-between">
+        <h2 class="text-black text-lg">Quản lý Phim</h2>
+        <nz-breadcrumb>
+          <nz-breadcrumb-item>User</nz-breadcrumb-item>
+          <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+        </nz-breadcrumb>
+      </div>
+      <div class="inner-content">
+        <div class="flex justify-between mb-12">
+          <div>
+            <span class="font-semibold text-base">Tên Phim</span>
+            <input nz-input placeholder="Nhập tên phim..." nzSize="default" class="w-[200px] ml-2" />
+            <button class="ml-2" nz-button nzSize="default" nzType="primary">Tìm kiếm</button>
+          </div>
+          <div>
+            <button (click)="addRow()" nz-button nzSize="default" nzType="primary">Thêm mới</button>
+            <button (click)="toggleCollapseTable()" nz-button nzSize="default" nzType="primary">
+              {{ isTableCollapsed ? 'Expand' : 'Collapse' }}
+            </button>
+            <button class="ml-2" nz-button nzSize="default" nzType="primary" nzDanger>Xóa</button>
+          </div>
+        </div>
+        <nz-table nzShowPagination nzShowSizeChanger #filmTable [nzData]="filmList" nzTableLayout="auto">
+          <thead>
+          <tr>
+            <th
+              scope="col"
+              [nzWidth]="'50px'"
+              [nzChecked]="true"
+              [nzIndeterminate]="false"
+              nzLabel="Select all"
+              (nzCheckedChange)="onAllChecked($event)"
+            ></th>
+            @for (column of listOfColumns; track i; let i = $index; let count = $count) {
+              @if (isTableCollapsed ? i < 5 || i >= count - 1 : true) {
+                <th
+                  [nzWidth]="column.width"
+                  scope="col"
+                  [(nzSortOrder)]="column.sortOrder"
+                  [nzSortFn]="column.sortFn"
+                  [nzSortDirections]="['', 'descend']"
+                  [nzFilters]="column.listOfFilter"
+                  [nzFilterFn]="column.filterFn"
+                >
+                  {{ column.name }}
+                </th>
+              }
+              @if (isTableCollapsed && i === count - 2) {
+                <th nzWidth="60px" scope="col">...</th>
+              }
+            }
+            <th scope="col" nzWidth="200px"></th>
+          </tr>
+          </thead>
+          <tbody>
+            @for (a of unsaved; track i; let i = $index) {
+              <tr>
+                <td [nzChecked]="true"></td>
+                <td></td>
+                <td><input nz-input type="text" /></td>
+                <td><input nz-input type="file" /></td>
+                <td><input nz-input type="file" /></td>
+                <td>
+                  <nz-select
+                    class="w-full"
+                    [nzMaxTagCount]="3"
+                    [nzMaxTagPlaceholder]="genrePlaceHolder"
+                    nzMode="multiple"
+                    nzPlaceHolder="Select genre"
+                  >
+                    <nz-option nzLabel="Lucy" nzValue="lucy" />
+                  </nz-select>
+                </td>
+                <td><input nz-input type="text" /></td>
+                <td><input nz-input type="number" /></td>
+                <td>
+                  <nz-date-picker nzFormat="dd/MM/YYY" />
+                </td>
+                <td>
+                  <nz-date-picker nzFormat="dd/MM/YYY" />
+                </td>
+                <td>
+                  <nz-select class="w-full"
+                             [nzMaxTagCount]="3"
+                             nzShowSearch
+                             nzAllowClear
+                             nzPlaceHolder="Country..."
+                  >
+                    <nz-option class="max-w-full" nzLabel="Jack11112312311" nzValue="jack" />
+                    <nz-option nzLabel="Lucy" nzValue="lucy" />
+                    <nz-option nzLabel="Tom" nzValue="tom" />
+                  </nz-select>
+                </td>
+                <td><input nz-input type="text" /></td>
+                <td><input nz-input type="text" /></td>
+                <td><input nz-input type="text" /></td>
+                <td>
+                  <nz-select class="w-full"
+                             [nzMaxTagCount]="3"
+                             nzShowSearch
+                             nzAllowClear
+                             nzPlaceHolder="Status"
+                  >
+                    <nz-option class="max-w-full" nzLabel="Active" nzValue="active" />
+                    <nz-option class="max-w-full" nzLabel="Inactive" nzValue="inactive" />
+                  </nz-select>
+                </td>
+              </tr>
+            }
+            @for (film of filmTable.data; track i; let i = $index; let count = $count) {
+              <tr>
+                <td [nzChecked]="true"></td>
+                <td>{{ i }}</td>
+                <td>{{ film.filmName }}</td>
+                <td>{{ film.imagePortrait }}</td>
+                <td>{{ film.imageLandscape }}</td>
+                <td>{{ film.genreName }}</td>
+                @if (!isTableCollapsed) {
+                  <td>{{ film.description }}</td>
+                  <td>{{ film.durationMinutes }}</td>
+                  <td>{{ film.startDate }}</td>
+                  <td>{{ film.endDate }}</td>
+                  <td>{{ film.country }}</td>
+                  <td>{{ film.director }}</td>
+                  <td>{{ film.actor }}</td>
+                  <td>{{ film.trailer }}</td>
+                } @else {
+                  <td></td>
+                }
+                <td>{{ film.status }}</td>
+              </tr>
+            }
+          </tbody>
+        </nz-table>
+      </div>
+    </nz-content>
+    <nz-footer>2024 © Developed by Lynx and Kantee. All rights reserved.</nz-footer>
+  </nz-layout>
+</app-sidebar-menu>
+
+<ng-template #genrePlaceHolder let-selectedList>and +{{ selectedList.length }} selected</ng-template>
+
+<router-outlet></router-outlet>

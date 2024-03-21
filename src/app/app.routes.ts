@@ -6,6 +6,7 @@ import { ErrorComponent } from './pages/client/error.component'
 import { DashboardComponent } from '@src/app/pages/admin/dashboard/dashboard.component'
 import { ShowtimesComponent } from '@src/app/pages/admin/showtimes/showtimes.component'
 import { TicketComponent } from '@src/app/pages/admin/ticket/ticket.component'
+import { FilmComponent } from '@src/app/pages/admin/film-group/film/film.component'
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'film', component: FilmComponent },
       { path: 'showtimes', component: ShowtimesComponent },
       { path: 'ticket', component: TicketComponent },
       { path: '123', component: HomeComponent }

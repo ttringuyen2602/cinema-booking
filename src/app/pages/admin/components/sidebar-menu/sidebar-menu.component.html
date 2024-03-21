@@ -1,48 +1,69 @@
 <nz-layout>
-  <nz-sider  nzCollapsible [(nzCollapsed)]="isCollapsed">
-<!--    <nz-affix>-->
-      <div class="logo">
-        <a href="/">N95 Cinema</a>
-      </div>
-      <ul nz-menu nzTheme="dark" nzMode="inline" class="h-screen">
-        <li nz-menu-item>
+  <nz-sider nzWidth="220px" nzCollapsible [(nzCollapsed)]="isCollapsed">
+    <a class="h-[80px] p-2" href="/">
+      <h1
+        class="text-2xl text-orange-10 bg-blue-20 hover:bg-blue-30 w-full font-semibold py-2 flex justify-center items-center">
+        N95 Cinema
+      </h1>
+    </a>
+    <ul nz-menu nzTheme="dark" nzMode="inline" class="h-screen">
+      <li nz-menu-item>
+        <a routerLink="/admin/dashboard">
           <span nz-icon nzType="home"></span>
           <span>Dashboard</span>
-        </li>
-        <li nz-submenu nzTitle="Quản lý Phim" nzIcon="menu">
-          <ul>
-            <li nz-menu-item>Tom</li>
-            <li nz-menu-item>Bill</li>
-            <li nz-menu-item>Alex</li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Quản lý Rạp" nzIcon="menu">
-          <ul>
-            <li nz-menu-item>Team 1</li>
-            <li nz-menu-item>Team 2</li>
-          </ul>
-        </li>
-        <li nz-submenu nzTitle="Quản lý Lịch Chiếu 123123" nzIcon="menu" title="Quản lý Lịch Chiếu123123">
-          <ul>
-            <li nz-menu-item>Team 1</li>
-            <li nz-menu-item>Team 2</li>
-          </ul>
-        </li>
-        <li nz-menu-item>
+        </a>
+      </li>
+      <li  (click)="pushSubMenuOpenStatus(SubMenuStateEnum.film)"
+           [nzOpen]="subMenuState.film" nz-submenu nzTitle="Quản lý Phim" nzIcon="menu">
+        <ul>
+          <li (click)="pushSubMenuOpenStatus(SubMenuStateEnum.film)" nz-menu-item>
+            <a routerLink="/admin/film">Phim</a>
+          </li>
+          <li (click)="pushSubMenuOpenStatus(SubMenuStateEnum.film)" nz-menu-item>
+            <a routerLink="/admin/genre">Thể Loại</a>
+          </li>
+        </ul>
+      </li>
+      <li (click)="pushSubMenuOpenStatus(SubMenuStateEnum.cinema)"
+          [nzOpen]="subMenuState.cinema" nz-submenu nzTitle="Quản lý Rạp" nzIcon="menu">
+        <ul>
+          <li (click)="pushSubMenuOpenStatus(SubMenuStateEnum.cinema)" nz-menu-item>
+            <a routerLink="/admin/cinema">Rạp</a>
+          </li>
+          <li (click)="pushSubMenuOpenStatus(SubMenuStateEnum.cinema)" nz-menu-item>
+            <a routerLink="/admin/auditorium">Phòng Chiếu</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-menu-item>
+        <a routerLink="/admin/showtimes">
+          <span nz-icon><i class="fa-regular fa-calendar"></i></span>
+          <span>Quản Lý Lịch Chiếu</span>
+        </a>
+      </li>
+      <li nz-menu-item>
+        <a routerLink="/admin/ticket">
+          <span nz-icon><i class="fa-solid fa-ticket"></i></span>
+          <span>Quản Lý Vé</span>
+        </a>
+      </li>
+      <li nz-menu-item>
+        <a routerLink="/admin/user">
           <span nz-icon nzType="user"></span>
           <span>Tài Khoản</span>
-        </li>
-        <li nz-menu-item routerLink="roles">
+        </a>
+      </li>
+      <li nz-menu-item>
+        <a routerLink="/admin/role">
           <span nz-icon nzType="block"></span>
-          <span>Roles</span>
-        </li>
-        <li nz-menu-item class="bottom-0">
-          <span nz-icon><i class="fa-solid fa-right-from-bracket"></i></span>
-          <span class="ml-[10px]">Đăng xuất</span>
-        </li>
-
-      </ul>
-<!--    </nz-affix>-->
+          <span>Quyền</span>
+        </a>
+      </li>
+      <li nz-menu-item class="bottom-0">
+        <span nz-icon><i class="fa-solid fa-right-from-bracket"></i></span>
+        <span class="ml-[10px]">Đăng xuất</span>
+      </li>
+    </ul>
   </nz-sider>
 
   <ng-content></ng-content>
