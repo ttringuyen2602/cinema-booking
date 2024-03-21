@@ -5,7 +5,7 @@ import { NzIconDirective } from 'ng-zorro-antd/icon'
 import { RouterOutlet } from '@angular/router'
 import { SidebarMenuComponent } from '../components/sidebar-menu/sidebar-menu.component'
 import { HeaderAdminComponent } from '../components/header/header.component'
-import { CinemaComponent } from '../cinema/cinema.component'
+import { CinemaComponent } from '@src/app/pages/admin/cinema-group/cinema/cinema.component'
 
 @Component({
   selector: 'app-dashboard',
