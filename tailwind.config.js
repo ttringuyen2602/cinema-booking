@@ -24,8 +24,9 @@ module.exports = {
           40: '#8c909e'
         },
         white: {
+          DEFAULT: '#ffffff',
           244: 'rgb(244,244,244)',
-          250: 'rgb(244,244,244)'
+          250: 'rgb(250,250,250)'
         }
       },
       screens: {
