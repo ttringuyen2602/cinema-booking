@@ -25,7 +25,13 @@
             <button class="ml-2" nz-button nzSize="default" nzType="primary" nzDanger>Xóa</button>
           </div>
         </div>
-        <nz-table nzShowPagination nzShowSizeChanger #filmTable [nzData]="filmList" nzTableLayout="auto">
+        <nz-table nzShowPagination
+                  nzShowSizeChanger
+                  nzTableLayout="auto"
+                  [nzScroll]="{ x: '1200px' }"
+                  [nzData]="filmList"
+                  #filmTable
+        >
           <thead>
           <tr>
             <th
