@@ -1,0 +1,80 @@
+<div class="login">
+  <div class="max-w-96 mx-auto bg-white-244 rounded-md text-black">
+    <div class="px-6 py-10">
+      <div class="login__icon text-center mb-3">
+        <a routerLink="/">
+          <img
+            alt="Icon Login"
+            class="my-0 mx-auto object-cover w-48 h-32"
+            src="https://www.galaxycine.vn/_next/static/media/icon-login.fbbf1b2d.svg"
+          />
+        </a>
+        <h5 class="text-lg text-black font-bold py-2 capitalize">Đăng nhập tài khoản</h5>
+      </div>
+
+      <form nz-form [formGroup]="validateForm" nzLayout="vertical" (ngSubmit)="submitForm()">
+        <nz-form-item class="mb-2">
+          <nz-form-label>E-mail</nz-form-label>
+          <nz-form-control [nzErrorTip]="emailErrorTpl">
+            <nz-input-group class="rounded" nzPrefixIcon="mail">
+              <input type="email" nz-input formControlName="email" placeholder="E-mail" />
+            </nz-input-group>
+            <ng-template #emailErrorTpl let-control>
+              @if (control.errors?.['email']) {
+                Định dạng E-mail chưa đúng!
+              }
+              @if (control.errors?.['required']) {
+                E-mail không được để trống!
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label>Mật khẩu</nz-form-label>
+          <nz-form-control nzErrorTip="Mật khẩu không được để trống!">
+            <nz-input-group class="rounded" nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                nz-input
+                formControlName="password"
+                placeholder="Mật khẩu"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <span
+                class="cursor-pointer"
+                nz-icon
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <button
+          class="w-full my-2 rounded-md hover:bg-primary-10 transition-all border-none focus:bg-primary-10 bg-primary text-sm text-center inline-flex items-center justify-center text-white px-5 py-2.5 uppercase"
+          nz-button
+          [nzType]="'primary'"
+        >
+          Đăng nhập
+        </button>
+
+        <div nz-col [nzSpan]="12">
+          <a routerLink="/forgot-password" class="text-black hover:text-primary font-medium">Quên mật khẩu?</a>
+        </div>
+
+        <div class="log__footer text-sm pt-6 mt-6 border-t-2 text-center">
+          <span>Bạn chưa có tài khoản?</span>
+          <a
+            routerLink="/register"
+            type="button"
+            class="rounded-md hover:bg-primary-10 transition-all duration-30 min-w-[135px] w-full focus:outline-none focus:ring-pribg-primary-10 text-sm text-center inline-flex items-center justify-center border border-primary text-primary hover:text-white px-6 py-[6px] font-semibold"
+          >
+            <span class="block">Đăng ký</span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

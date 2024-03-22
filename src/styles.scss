@@ -11,6 +11,7 @@
   --orange-color: #f26b38;
   --des-text-color: rgb(221, 221, 221);
   --my-red-color: #cc2d3f;
+  --my-dark-red-color: #9e2432;
   --black-text-color: #000000;
 }
 
@@ -73,6 +74,10 @@ img {
 
 a {
   color: var(--text-color);
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 menu,
