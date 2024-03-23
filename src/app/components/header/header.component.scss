@@ -1,11 +1,9 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  height: 60px;
+  height: 70px;
   z-index: 10;
   position: relative;
-  margin-bottom: 24px;
-  padding-top: 8px;
 }
 
 .navbar-left {
@@ -16,7 +14,6 @@
 .navbar-right {
   display: flex;
   align-items: center;
-  padding-top: 8px;
 }
 
 .account {

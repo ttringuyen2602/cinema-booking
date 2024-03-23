@@ -104,11 +104,17 @@ h6 {
   vertical-align: -0.125em;
 }
 
-.slick-dots button {
-  width: 14px !important;
-  height: 14px !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 2px 1px rgb(145 145 145);
+.slick-dots {
+  button {
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 2px 1px rgb(145 145 145);
+  }
+}
+
+.ant-carousel .slick-dots-bottom {
+  bottom: 25px;
 }
 
 .ant-tabs-card {
