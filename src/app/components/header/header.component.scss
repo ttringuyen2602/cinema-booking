@@ -1,11 +1,9 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  height: 60px;
+  height: 70px;
   z-index: 10;
   position: relative;
-  margin-bottom: 24px;
-  padding-top: 8px;
 }
 
 .navbar-left {
@@ -16,7 +14,6 @@
 .navbar-right {
   display: flex;
   align-items: center;
-  padding-top: 8px;
 }
 
 .account {
@@ -49,7 +46,8 @@
     text-shadow: 1px 1px 4px black;
   }
 
-  &:first-child a, &:last-child a {
+  &:first-child a,
+  &:last-child a {
     padding-left: 0;
   }
 
@@ -87,16 +85,25 @@
 }
 
 .account_selection {
-  position: absolute;
-  top: 32px;
-  background-color: #333;
-  padding: 16px;
-  border-radius: 6px;
-  width: 140px;
-  right: 0;
-  display: none;
-}
+  display: flex;
+  &__login,
+  &__register {
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
 
-.account_selection__sign-in {
-  margin-bottom: 16px;
+    &:hover {
+      background-color: var(--my-dark-red-color);
+    }
+  }
+
+  &__login {
+    background-color: #3339;
+    margin-right: 8px;
+  }
+
+  &__register {
+    background-color: var(--my-red-color);
+  }
 }

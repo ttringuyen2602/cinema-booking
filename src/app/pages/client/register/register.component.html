@@ -1,0 +1,156 @@
+<div class="register">
+  <div class="max-w-96 mx-auto bg-white-244 rounded-md text-black">
+    <div class="px-6 py-10">
+      <div class="login__icon text-center mb-3">
+        <a routerLink="/">
+          <img
+            alt="Icon Login"
+            class="my-0 mx-auto object-cover w-48 h-32"
+            src="https://www.galaxycine.vn/_next/static/media/icon-login.fbbf1b2d.svg"
+          />
+        </a>
+        <h5 class="text-lg text-black font-bold py-2 capitalize">Đăng ký tài khoản</h5>
+      </div>
+
+      <form nz-form [formGroup]="validateForm" nzLayout="vertical" (ngSubmit)="submitForm()">
+        <nz-form-item class="mb-2">
+          <nz-form-label>Họ và tên</nz-form-label>
+          <nz-form-control nzErrorTip="Họ và tên không được để trống!">
+            <nz-input-group class="rounded" nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="userName" placeholder="Họ và tên" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mb-2">
+          <nz-form-label>E-mail</nz-form-label>
+          <nz-form-control [nzErrorTip]="emailErrorTpl">
+            <nz-input-group class="rounded" nzPrefixIcon="mail">
+              <input type="email" nz-input formControlName="email" placeholder="E-mail" />
+            </nz-input-group>
+            <ng-template #emailErrorTpl let-control>
+              @if (control.errors?.['email']) {
+                Định dạng E-mail chưa đúng!
+              }
+              @if (control.errors?.['required']) {
+                E-mail không được để trống!
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mb-2">
+          <nz-form-label>Điện thoại</nz-form-label>
+          <nz-form-control [nzErrorTip]="phoneErrorTpl" nzValidatingTip="Validating...">
+            <nz-input-group class="rounded" nzPrefixIcon="phone">
+              <input type="text" nz-input formControlName="phone" placeholder="Điện thoại" />
+            </nz-input-group>
+            <ng-template #phoneErrorTpl let-control>
+              @if (control.errors?.['required']) {
+                Số điện thoại không được để trống!
+              }
+              @if (control.errors?.['duplicated']) {
+                Số điện thoại đã được sử dụng!
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mb-2">
+          <nz-form-label>Giới tính</nz-form-label>
+          <nz-form-control nzErrorTip="Vui lòng chọn giới tính!">
+            <nz-radio-group formControlName="gender">
+              <label nz-radio nzValue="nam">Nam</label>
+              <label nz-radio nzValue="nu">Nữ</label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mb-2">
+          <nz-form-label>Ngày sinh</nz-form-label>
+          <nz-form-control nzErrorTip="Vui lòng chọn ngày sinh!">
+            <nz-date-picker
+              class="rounded w-full"
+              formControlName="dob"
+              nzFormat="dd/MM/yyyy"
+              nzShowToday="false"
+              nzPlaceHolder="Ngày sinh"
+            ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="mb-2">
+          <nz-form-label>Mật khẩu</nz-form-label>
+          <nz-form-control nzErrorTip="Mật khẩu không được để trống!">
+            <nz-input-group class="rounded" nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                nz-input
+                formControlName="password"
+                placeholder="Mật khẩu"
+                (ngModelChange)="validateConfirmPassword()"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <span
+                class="cursor-pointer"
+                nz-icon
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label>Nhập lại mật khẩu</nz-form-label>
+          <nz-form-control [nzErrorTip]="passwordErrorTpl">
+            <nz-input-group class="rounded" nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                nz-input
+                formControlName="confirm"
+                placeholder="Nhập lại mật khẩu"
+              />
+            </nz-input-group>
+            <ng-template #suffixTemplate>
+              <span
+                class="cursor-pointer"
+                nz-icon
+                [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+            <ng-template #passwordErrorTpl let-control>
+              @if (control.errors?.['required']) {
+                Nhập lại mật khẩu không được để trống!
+              }
+              @if (control.errors?.['confirm']) {
+                Mật khẩu chưa khớp!
+              }
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <button
+          class="w-full my-2 rounded-md hover:bg-primary-10 transition-all border-none focus:bg-primary-10 bg-primary text-sm text-center inline-flex items-center justify-center text-white px-5 py-2.5 uppercase"
+          nz-button
+          [nzType]="'primary'"
+        >
+          Hoàn thành
+        </button>
+
+        <div class="log__footer text-sm pt-6 mt-6 border-t-2 text-center">
+          <span>Bạn đã có tài khoản?</span>
+          <a
+            routerLink="/login"
+            type="button"
+            class="rounded-md hover:bg-primary-10 transition-all duration-30 min-w-[135px] w-full focus:outline-none focus:ring-pribg-primary-10 text-sm text-center inline-flex items-center justify-center border border-primary text-primary hover:text-white px-6 py-[6px] font-semibold"
+          >
+            <span class="block">Đăng nhập</span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
