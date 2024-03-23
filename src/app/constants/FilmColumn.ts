@@ -1,155 +1,80 @@
-import { DataItem } from '@src/app/models/DataItem'
-import { ColumnItem } from '@src/app/models/ColumnItem'
+import { Film } from '@src/app/models/Film'
+import { ColumnItem, sortFn } from '@src/app/models/ColumnItem'
+import _ from 'lodash'
 
 export const filmColumnList: ColumnItem[] = [
   {
-    name: 'STT',
+    name: 'Id',
     width: '80px',
-    sortOrder: null,
-    sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),
-    listOfFilter: [
-      { text: 'Edward King 1', value: 'King 1' },
-      { text: 'Jim', value: 'Jim' }
-    ],
-    filterFn: (list: string[], item: DataItem) => list.some(name => item.name.indexOf(name) !== -1)
+    sortFn: (a: Film, b: Film) => sortFn(a.filmId, b.filmId)
   },
   {
     name: 'Tên Phim',
     width: '200px',
-    sortOrder: null,
-    sortFn: (a: DataItem, b: DataItem) => a.age - b.age,
-    listOfFilter: [],
-    filterFn: null
+    sortFn: (a: Film, b: Film) => sortFn(a.filmName, b.filmName)
   },
   {
     name: 'Portrait Image',
     width: '200px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: null
   },
   {
     name: 'Landscape Image',
     width: '200px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: null
   },
   {
     name: 'Thể Loại',
-    width: '140px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    width: '180px',
+    sortFn: null,
   },
   {
     name: 'Mô Tả',
     width: '200px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.description, b.description)
   },
   {
     name: 'Thời Lượng',
     width: '100px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.durationMinutes, b.durationMinutes)
   },
   {
     name: 'Ngày Khởi Chiếu',
     width: '160px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.startDate.getDate(), b.startDate.getDate())
   },
   {
     name: 'Ngày Kết Thúc',
     width: '160px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.endDate.getDate(), b.endDate.getDate())
   }, {
     name: 'Quốc Gia',
     width: '160px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.country, b.country)
   },
   {
     name: 'Đạo Diễn',
     width: '160px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.director, b.director)
   },
   {
     name: 'Diễn Viên',
     width: '240px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.actor, b.actor)
   },
   {
     name: 'Trailer',
     width: '160px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.trailer, b.trailer)
   },
   {
     name: 'Trạng Thái',
     width: '100px',
-    sortFn: (a: DataItem, b: DataItem) => a.address > b.address ? 1 : 0,
-    sortOrder: null,
-    listOfFilter: [
-      { text: 'London', value: 'London' },
-      { text: 'Sidney', value: 'Sidney' }
-    ],
-    filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    sortFn: (a: Film, b: Film) => sortFn(a.status, b.status)
+  },
+  {
+    name: 'Update',
+    width: '100px',
+    sortFn: null
   }
 ]

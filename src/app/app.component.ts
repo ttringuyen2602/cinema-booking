@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { NavigationStart, Router, RouterOutlet } from '@angular/router'
 import { Location } from '@angular/common'
-import { PATH } from '@src/app/constants/pathConstant'
+import { PATH } from '@src/app/constants/path-constant'
 
 @Component({
   selector: 'app-root',

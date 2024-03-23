@@ -11,22 +11,83 @@
         </nz-breadcrumb>
       </div>
       <div class="inner-content">
-        <div class="flex justify-between mb-12">
-          <div>
-            <span class="font-semibold text-base">Tên Phim</span>
-            <input nz-input placeholder="Nhập tên phim..." nzSize="default" class="w-[200px] ml-2" />
-            <button class="ml-2" nz-button nzSize="default" nzType="primary">Tìm kiếm</button>
-          </div>
-          <div>
-            <button (click)="addRow()" nz-button nzSize="default" nzType="primary">Thêm mới</button>
-            <button (click)="toggleCollapseTable()" nz-button nzSize="default" nzType="primary">
+        <div class="px-4 pt-4 pb-12">
+          <table>
+            <caption class="hidden">Add caption to pass Sonar check</caption>
+            <thead>
+            <tr>
+              <th class="pr-2 pb-2"><p class="text-left font-medium">Search here</p></th>
+              <th class="pr-2 pb-2"><p class="text-left font-medium">Search by</p></th>
+            </tr>
+            </thead>
+            <tbody>
+            <td class="pr-2">
+              <nz-select class="w-[160px]"
+                         nzShowSearch
+                         nzAllowClear
+                         nzPlaceHolder="Search by"
+                         [(ngModel)]="filmColumnSelectedSearch"
+              >
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.filmId" nzLabel="Id" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.filmName" nzLabel="Tên Phim" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.genre" nzLabel="Thể Loại" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.description" nzLabel="Mô Tả" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.duration" nzLabel="Thời Lượng" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.country" nzLabel="Quốc Gia" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.director" nzLabel="Đạo Diễn" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.actor" nzLabel="Diễn Viên" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.trailer" nzLabel="Trailer" />
+                <nz-option class="max-w-full" [nzValue]="filmColumnValue.status" nzLabel="Trạng Thái" />
+              </nz-select>
+            </td>
+            <td class="pr-2">
+              <input [(ngModel)]="searchValue" nz-input placeholder="Search here" nzSize="default"
+                     class="w-[200px]" />
+            </td>
+            <td class="pr-2">
+              <button (click)="searchByField()" nz-button nzSize="default" nzType="primary">
+                Tìm kiếm
+              </button>
+            </td>
+            <td class="pr-2">
+              <button (click)="addFilm()" nz-button
+                      app-nz-color
+                      appNzColor="green"
+                      appNzType="primary"
+              >
+                Thêm mới
+              </button>
+            </td>
+            <td class="pr-2">
+              <button nz-button
+                      nzSize="default"
+                      nzType="primary"
+                      nzDanger
+                      (click)="deleteFilm()"
+              >
+                Xóa
+              </button>
+            </td>
+            </tbody>
+          </table>
+          <div class="flex justify-end">
+            <button (click)="toggleCollapseTable()"
+                    disabled
+                    nz-button
+                    app-nz-color
+                    appNzType="primary"
+                    appNzColor="green"
+            >
               {{ isTableCollapsed ? 'Expand' : 'Collapse' }}
             </button>
-            <button class="ml-2" nz-button nzSize="default" nzType="primary" nzDanger>Xóa</button>
           </div>
         </div>
         <nz-table nzShowPagination
                   nzShowSizeChanger
+                  [nzPageSizeOptions]="[5, 10, 20, 30, 40, 50, 1]"
+                  [nzPageSize]="2"
+                  [nzLoading]="tableLoading"
+                  (nzQueryParams)="onSelectPage($event)"
                   nzTableLayout="auto"
                   [nzScroll]="{ x: '1200px' }"
                   [nzData]="filmList"
@@ -37,21 +98,17 @@
             <th
               scope="col"
               [nzWidth]="'50px'"
-              [nzChecked]="true"
+              [(nzChecked)]="isCheckAll"
               [nzIndeterminate]="false"
               nzLabel="Select all"
-              (nzCheckedChange)="onAllChecked($event)"
+              (nzCheckedChange)="onCheck(true)"
             ></th>
-            @for (column of listOfColumns; track i; let i = $index; let count = $count) {
+            @for (column of filmColumnList; track i; let i = $index; let count = $count) {
               @if (isTableCollapsed ? i < 5 || i >= count - 1 : true) {
                 <th
                   [nzWidth]="column.width"
                   scope="col"
-                  [(nzSortOrder)]="column.sortOrder"
                   [nzSortFn]="column.sortFn"
-                  [nzSortDirections]="['', 'descend']"
-                  [nzFilters]="column.listOfFilter"
-                  [nzFilterFn]="column.filterFn"
                 >
                   {{ column.name }}
                 </th>
@@ -60,17 +117,25 @@
                 <th nzWidth="60px" scope="col">...</th>
               }
             }
-            <th scope="col" nzWidth="200px"></th>
+            <th scope="col" nzWidth="100px"></th>
           </tr>
           </thead>
           <tbody>
-            @for (a of unsaved; track i; let i = $index) {
+            @for (film of filmUnsavedListCreate; track i; let i = $index) {
               <tr>
-                <td [nzChecked]="true"></td>
+                <td [nzChecked]="film.isChecked"></td>
                 <td></td>
-                <td><input nz-input type="text" /></td>
-                <td><input nz-input type="file" /></td>
-                <td><input nz-input type="file" /></td>
+                <td><input [(ngModel)]="film.filmName" nz-input type="text" /></td>
+                <td>
+                  <input onclick="this.value = null"
+                         (change)="assignFileToFilm($event, film, 'portrait')"
+                         nz-input type="file" />
+                </td>
+                <td>
+                  <input onclick="this.value = null"
+                         (change)="assignFileToFilm($event, film, 'landscape')"
+                         nz-input type="file" />
+                </td>
                 <td>
                   <nz-select
                     class="w-full"
@@ -78,68 +143,192 @@
                     [nzMaxTagPlaceholder]="genrePlaceHolder"
                     nzMode="multiple"
                     nzPlaceHolder="Select genre"
+                    [(ngModel)]="film.genreNameList"
                   >
-                    <nz-option nzLabel="Lucy" nzValue="lucy" />
+                    @for (genre of genreNameList; track $index) {
+                      <nz-option [nzLabel]="genre" [nzValue]="genre" />
+                    }
                   </nz-select>
                 </td>
-                <td><input nz-input type="text" /></td>
-                <td><input nz-input type="number" /></td>
+                <td><input [(ngModel)]="film.description" nz-input type="text" /></td>
+                <td><input [(ngModel)]="film.durationMinutes" nz-input type="number" /></td>
                 <td>
-                  <nz-date-picker nzFormat="dd/MM/YYY" />
+                  <nz-date-picker [(ngModel)]="film.startDate" nzFormat="dd/MM/YYY" />
                 </td>
                 <td>
-                  <nz-date-picker nzFormat="dd/MM/YYY" />
+                  <nz-date-picker [(ngModel)]="film.endDate" nzFormat="dd/MM/YYY" />
                 </td>
                 <td>
                   <nz-select class="w-full"
-                             [nzMaxTagCount]="3"
                              nzShowSearch
                              nzAllowClear
                              nzPlaceHolder="Country..."
+                             [(ngModel)]="film.country"
                   >
-                    <nz-option class="max-w-full" nzLabel="Jack11112312311" nzValue="jack" />
-                    <nz-option nzLabel="Lucy" nzValue="lucy" />
-                    <nz-option nzLabel="Tom" nzValue="tom" />
+                    @for (country of countries; track $index) {
+                      <nz-option class="max-w-full" [nzLabel]="country" [nzValue]="country" />
+                    }
                   </nz-select>
                 </td>
-                <td><input nz-input type="text" /></td>
-                <td><input nz-input type="text" /></td>
-                <td><input nz-input type="text" /></td>
+                <td><input [(ngModel)]="film.director" nz-input type="text" /></td>
+                <td><input [(ngModel)]="film.actor" nz-input type="text" /></td>
+                <td><input [(ngModel)]="film.trailer" nz-input type="text" /></td>
                 <td>
                   <nz-select class="w-full"
-                             [nzMaxTagCount]="3"
                              nzShowSearch
                              nzAllowClear
                              nzPlaceHolder="Status"
                   >
-                    <nz-option class="max-w-full" nzLabel="Active" nzValue="active" />
-                    <nz-option class="max-w-full" nzLabel="Inactive" nzValue="inactive" />
+                    <nz-option class="max-w-full" nzLabel="ACTIVE" nzValue="ACTIVE" />
+                    <nz-option class="max-w-full" nzLabel="INACTIVE" nzValue="INACTIVE" />
                   </nz-select>
+                </td>
+                <td class="flex">
+                  <button class="w-full h-[32px]
+                                 text-green-400
+                                 hover:text-green-300
+                                 active:text-green-500"
+                          (click)="saveAddFilm(film, i, 'SAVE')"
+                  >
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                  <button class="w-full h-[32px]
+                                 text-red-400
+                                 hover:text-red-300
+                                 active:text-red-500"
+                          (click)="saveAddFilm(film, i, 'CANCEL')"
+                  >
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
                 </td>
               </tr>
             }
-            @for (film of filmTable.data; track i; let i = $index; let count = $count) {
-              <tr>
-                <td [nzChecked]="true"></td>
-                <td>{{ i }}</td>
-                <td>{{ film.filmName }}</td>
-                <td>{{ film.imagePortrait }}</td>
-                <td>{{ film.imageLandscape }}</td>
-                <td>{{ film.genreName }}</td>
-                @if (!isTableCollapsed) {
-                  <td>{{ film.description }}</td>
-                  <td>{{ film.durationMinutes }}</td>
-                  <td>{{ film.startDate }}</td>
-                  <td>{{ film.endDate }}</td>
-                  <td>{{ film.country }}</td>
-                  <td>{{ film.director }}</td>
-                  <td>{{ film.actor }}</td>
-                  <td>{{ film.trailer }}</td>
-                } @else {
-                  <td></td>
-                }
-                <td>{{ film.status }}</td>
-              </tr>
+            @for (film of filmList; track trackByFilmId) {
+              @if (!film.isEditing) {
+                <tr>
+                  <td [(nzChecked)]="film.isChecked" (nzCheckedChange)="onCheck()"></td>
+                  <td>{{ film.filmId }}</td>
+                  <td>{{ film.filmName }}</td>
+                  <td><p class="max-h-[84px] truncate">{{ film.portraitImage }}</p></td>
+                  <td><p class="max-h-[84px] truncate">{{ film.landscapeImage }}</p></td>
+                  <td>
+                    @for (gName of film.genreNameList; track i; let i = $index; let count = $count) {
+                      @if (i < count - 1) {
+                        {{ gName + ', ' }}
+                      } @else {
+                        {{ gName }}
+                      }
+                    }
+                  </td>
+                  @if (!isTableCollapsed) {
+                    <td>{{ film.description }}</td>
+                    <td>{{ film.durationMinutes }}</td>
+                    <td>{{ film.startDate }}</td>
+                    <td>{{ film.endDate }}</td>
+                    <td>{{ film.country }}</td>
+                    <td>{{ film.director }}</td>
+                    <td>{{ film.actor }}</td>
+                    <td>{{ film.trailer }}</td>
+                    <td>{{ film.status }}</td>
+                  } @else {
+                    <td></td>
+                  }
+                  <td>
+                    <button class="w-full h-[32px]
+                                 text-yellow-400
+                                 hover:text-yellow-300
+                                 active:text-yellow-500"
+                            (click)="openEditMode(film)"
+                    >
+                      <i class="fa-solid fa-pen"></i>
+                    </button>
+                  </td>
+                </tr>
+              }
+              @if (film.isEditing) {
+                <tr>
+                  <td [nzChecked]="film.isChecked"></td>
+                  <td>{{ film.filmId }}</td>
+                  <td><input [(ngModel)]="film.filmName" nz-input type="text" /></td>
+                  <td>
+                    <input onclick="this.value = null"
+                           (change)="assignFileToFilm($event, film, 'portrait')"
+                           nz-input type="file" />
+                  </td>
+                  <td>
+                    <input
+                      onclick="this.value = null"
+                      (change)="assignFileToFilm($event, film, 'landscape')"
+                      nz-input type="file" />
+                  </td>
+                  <td>
+                    <nz-select
+                      class="w-full"
+                      [nzMaxTagCount]="3"
+                      [nzMaxTagPlaceholder]="genrePlaceHolder"
+                      nzMode="multiple"
+                      nzPlaceHolder="Select genre"
+                      [(ngModel)]="film.genreNameList"
+                    >
+                      @for (genre of genreNameList; track $index) {
+                        <nz-option [nzLabel]="genre" [nzValue]="genre" />
+                      }
+                    </nz-select>
+                  </td>
+                  <td><input [(ngModel)]="film.description" nz-input type="text" /></td>
+                  <td><input [(ngModel)]="film.durationMinutes" nz-input type="number" /></td>
+                  <td>
+                    <nz-date-picker [(ngModel)]="film.startDate" nzFormat="dd/MM/YYY" />
+                  </td>
+                  <td>
+                    <nz-date-picker [(ngModel)]="film.endDate" nzFormat="dd/MM/YYY" />
+                  </td>
+                  <td>
+                    <nz-select class="w-full"
+                               nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Country..."
+                               [(ngModel)]="film.country"
+                    >
+                      @for (country of countries; track $index) {
+                        <nz-option class="max-w-full" [nzLabel]="country" [nzValue]="country" />
+                      }
+                    </nz-select>
+                  </td>
+                  <td><input [(ngModel)]="film.director" nz-input type="text" /></td>
+                  <td><input [(ngModel)]="film.actor" nz-input type="text" /></td>
+                  <td><input [(ngModel)]="film.trailer" nz-input type="text" /></td>
+                  <td>
+                    <nz-select class="w-full"
+                               nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Status"
+                               [(ngModel)]="film.status"
+                    >
+                      <nz-option class="max-w-full" nzLabel="ACTIVE" nzValue="ACTIVE" />
+                      <nz-option class="max-w-full" nzLabel="INACTIVE" nzValue="INACTIVE" />
+                    </nz-select>
+                  </td>
+                  <td class="flex">
+                    <button class="w-full h-[32px]
+                                 text-green-400
+                                 hover:text-green-300
+                                 active:text-green-500"
+                            (click)="saveEditFilm(film, 'SAVE')"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button class="w-full h-[32px]
+                                 text-red-400
+                                 hover:text-red-300
+                                 active:text-red-500"
+                            (click)="saveEditFilm(film, 'CANCEL')"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </td>
+                </tr>
+              }
             }
           </tbody>
         </nz-table>

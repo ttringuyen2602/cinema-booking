@@ -6,7 +6,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu'
 import { AdminMenuService } from '@src/app/services/admin-menu.service'
 import { NzAffixModule } from 'ng-zorro-antd/affix'
 import { NzButtonModule } from 'ng-zorro-antd/button'
-import { SubMenuStateEnum, SubMenuState } from '@src/app/constants/SubMenuState'
+import { SubMenuStateEnum, SubMenuState } from '@src/app/models/SubMenuState'
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -38,7 +38,6 @@ export class SidebarMenuComponent implements OnInit {
   }
 
   pushSubMenuOpenStatus(state: SubMenuStateEnum): void {
-    console.log(123123)
     this.adminMenuService.setSubMenuOpenStatus(state)
   }
 

@@ -4,8 +4,11 @@ import { DataItem } from '@src/app/models/DataItem'
 export interface ColumnItem {
   name: string;
   width: string;
-  sortOrder: NzTableSortOrder | null;
-  sortFn: NzTableSortFn<DataItem> | null;
-  listOfFilter: NzTableFilterList;
-  filterFn: NzTableFilterFn<DataItem> | null;
+  sortFn: NzTableSortFn<any> | null;
+}
+
+export function sortFn(a: any, b: any) {
+  if (a > b) return 1
+  else if (a < b) return -1
+  else return 0
 }

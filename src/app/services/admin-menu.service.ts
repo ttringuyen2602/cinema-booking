@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
-import { SubMenuState, SubMenuStateEnum } from '@src/app/constants/SubMenuState'
+import { SubMenuState, SubMenuStateEnum } from '@src/app/models/SubMenuState'
 import { Location } from '@angular/common'
 import { ActivationEnd, NavigationStart, Router } from '@angular/router'
-import { PATH } from '@src/app/constants/pathConstant'
+import { PATH } from '@src/app/constants/path-constant'
 
 @Injectable({
   providedIn: 'root'
